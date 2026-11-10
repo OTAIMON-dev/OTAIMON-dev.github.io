@@ -18,14 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
       sec_catalog: "STUDIO RELEASES",
       zet_desc: "A story-driven roguelike deckbuilder with over-the-top space trash action, planet fusion, and wild card combos. Published by Raw Fury.",
       wolf_desc: "A stylish monochrome RPG about three former partners in crime navigating a giant mecha tournament. Published by Raw Fury.",
-      press_title: "PRESS KIT & INQUIRIES",
-      press_desc: "Looking for high-res key art, clean gameplay screenshots, studio fact sheets, or review keys?",
+      press_title: "PRESS KIT & MEDIA ASSETS",
+      press_heading: "MEDIA KIT, KEY ART & REVIEW KEYS",
+      press_desc: "Access high-resolution key art, clean in-game screenshots, studio bios, and game logos in our official press kit folder on Google Drive.",
       btn_presskit: "OFFICIAL PRESS KIT (GOOGLE DRIVE) ↗",
       btn_contact: "PRESS INQUIRIES: CONTACT@OTAIMON.COM",
-      facts_title: "STUDIO FACTS",
-      fact_loc_label: "Location:",
-      fact_fnd_label: "Founded:",
-      fact_pub_label: "Publishing:"
+      facts_title: "STUDIO PROFILE",
+      fact_loc_label: "LOCATION",
+      fact_fnd_label: "FOUNDED"
     },
     pt: {
       hero_status: "EM DESENVOLVIMENTO ATIVO • LISTA DE DESEJOS NA STEAM",
@@ -39,14 +39,14 @@ document.addEventListener("DOMContentLoaded", () => {
       sec_catalog: "JOGOS LANÇADOS",
       zet_desc: "Um roguelike deckbuilder narrativo com fusão de planetas, combos insanos de cartas e ação espacial. Publicado pela Raw Fury.",
       wolf_desc: "Um RPG monocromático de aventura sobre três ex-parceiros de crime disputando um torneio de mechas gigantes. Publicado pela Raw Fury.",
-      press_title: "PRESS KIT & CONTATO DE IMPRENSA",
-      press_desc: "Procurando key art em alta resolução, capturas de tela limpas de gameplay, ficha técnica do estúdio ou chaves de análise?",
+      press_title: "PRESS KIT & MATERIAIS DE IMPRENSA",
+      press_heading: "KIT DE IMPRENSA, KEY ART & CHAVES DE ANÁLISE",
+      press_desc: "Acesse key art em alta resolução, capturas limpas de tela, ficha técnica e logotipos na nossa pasta oficial de imprensa no Google Drive.",
       btn_presskit: "PRESS KIT OFICIAL (GOOGLE DRIVE) ↗",
       btn_contact: "CONTATO DE IMPRENSA: CONTACT@OTAIMON.COM",
-      facts_title: "FICHA TÉCNICA DO ESTÚDIO",
-      fact_loc_label: "Localização:",
-      fact_fnd_label: "Fundação:",
-      fact_pub_label: "Publicação:"
+      facts_title: "PERFIL DO ESTÚDIO",
+      fact_loc_label: "LOCALIZAÇÃO",
+      fact_fnd_label: "FUNDAÇÃO"
     }
   };
 
@@ -98,7 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const fallbackUrl = btn.getAttribute("href");
       if (!appId) return;
 
-      // Se for clique com botão direito ou ctrl/cmd (nova aba intencional), deixa o comportamento padrão
       if (e.metaKey || e.ctrlKey || e.button !== 0) return;
 
       e.preventDefault();
@@ -106,13 +105,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const steamProtocolUri = `steam://store/${appId}`;
       let appOpened = false;
 
-      // Se o app abrir e a janela perder o foco dentro de 1.5s, consideramos que o app da Steam foi acionado
       const handleBlur = () => {
         appOpened = true;
       };
       window.addEventListener("blur", handleBlur, { once: true });
 
-      // Tenta acionar o protocolo da Steam pelo iframe invisível
       const iframe = document.createElement("iframe");
       iframe.style.display = "none";
       iframe.src = steamProtocolUri;
@@ -121,7 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         document.body.removeChild(iframe);
         window.removeEventListener("blur", handleBlur);
-        // Se a janela não perdeu o foco, o protocolo falhou/não está instalado: abre no navegador
         if (!appOpened) {
           window.open(fallbackUrl, "_blank", "noopener,noreferrer");
         }
