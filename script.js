@@ -1,17 +1,17 @@
-// Simple, lightweight Vanilla JS Localization (i18n) & Dynamic Logic
+// Simple, lightweight Vanilla JS Localization & Steam Protocol Fallback
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Dynamic Footer Year
+  // 1. Footer Year
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // 2. Localization Dictionary (English & Portuguese)
+  // 2. Localization Dictionary
   const translations = {
     en: {
       hero_status: "IN ACTIVE DEVELOPMENT • STEAM WISHLIST LIVE",
       hero_pitch: "A tactical roguelite dispatch sim where cards, dice, and strategy collide. Deploy a squad of flawed specialists to deadly spaceship crises, manipulate dice pools, manage failing stations, and survive long enough to slay the Moon Dragon.",
       btn_wishlist: "WISHLIST ON STEAM",
-      btn_trailer: "WATCH TRAILER",
-      sec_gameplay: "GAMEPLAY & TRAILER",
+      btn_presskit_quick: "PRESS KIT (DRIVE)",
+      sec_screenshots: "GAMEPLAY PREVIEWS",
       scr_label1: "DISPATCH INTERFACE",
       scr_label2: "DICE & TRAUMA MECHANICS",
       scr_label3: "VESSEL CRISES",
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
       wolf_desc: "A stylish monochrome RPG about three former partners in crime navigating a giant mecha tournament. Published by Raw Fury.",
       press_title: "PRESS KIT & INQUIRIES",
       press_desc: "Looking for high-res key art, clean gameplay screenshots, studio fact sheets, or review keys?",
-      btn_presskit: "DOWNLOAD PRESS KIT (ZIP / DRIVE)",
+      btn_presskit: "OFFICIAL PRESS KIT (GOOGLE DRIVE) ↗",
       btn_contact: "PRESS INQUIRIES: CONTACT@OTAIMON.COM",
       facts_title: "STUDIO FACTS",
       fact_loc_label: "Location:",
@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
       hero_status: "EM DESENVOLVIMENTO ATIVO • LISTA DE DESEJOS NA STEAM",
       hero_pitch: "Um simulador tático roguelite de despacho onde cartas, dados e estratégia colidem. Envie um esquadrão de especialistas imperfeitos para crises mortais na nave, ative traços e traumas para manipular dados e sobreviva para derrotar o Dragão da Lua.",
       btn_wishlist: "ADICIONAR À LISTA NA STEAM",
-      btn_trailer: "ASSISTIR AO TRAILER",
-      sec_gameplay: "GAMEPLAY & TRAILER",
+      btn_presskit_quick: "PRESS KIT (DRIVE)",
+      sec_screenshots: "PRÉVIAS DE GAMEPLAY",
       scr_label1: "INTERFACE DE DESPACHO",
       scr_label2: "MECÂNICAS DE DADOS & TRAUMAS",
       scr_label3: "CRISES NA NAVE",
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
       wolf_desc: "Um RPG monocromático de aventura sobre três ex-parceiros de crime disputando um torneio de mechas gigantes. Publicado pela Raw Fury.",
       press_title: "PRESS KIT & CONTATO DE IMPRENSA",
       press_desc: "Procurando key art em alta resolução, capturas de tela limpas de gameplay, ficha técnica do estúdio ou chaves de análise?",
-      btn_presskit: "BAIXAR PRESS KIT (ZIP / DRIVE)",
+      btn_presskit: "PRESS KIT OFICIAL (GOOGLE DRIVE) ↗",
       btn_contact: "CONTATO DE IMPRENSA: CONTACT@OTAIMON.COM",
       facts_title: "FICHA TÉCNICA DO ESTÚDIO",
       fact_loc_label: "Localização:",
@@ -50,13 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // 3. Language Switching Functionality
+  // 3. Language Switching
   const langButtons = document.querySelectorAll(".lang-btn");
   
   function applyLanguage(lang) {
     if (!translations[lang]) return;
     
-    // Update all elements with data-i18n attribute
     document.querySelectorAll("[data-i18n]").forEach(el => {
       const key = el.getAttribute("data-i18n");
       if (translations[lang][key]) {
@@ -64,18 +63,15 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Update active button state
     langButtons.forEach(btn => {
       btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
     });
 
-    // Persist choice in browser localStorage
     try {
       localStorage.setItem("preferred_lang", lang);
     } catch(e) {}
   }
 
-  // Detect saved preference or browser default language
   let userLang = "en";
   try {
     const saved = localStorage.getItem("preferred_lang");
@@ -88,11 +84,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
   applyLanguage(userLang);
 
-  // Button Click Listeners
   langButtons.forEach(btn => {
     btn.addEventListener("click", () => {
-      const selected = btn.getAttribute("data-lang");
-      applyLanguage(selected);
+      applyLanguage(btn.getAttribute("data-lang"));
+    });
+  });
+
+  // 4. Steam Protocol Handler (Tenta abrir no app Steam; se falhar, abre na aba normal do browser)
+  const steamButtons = document.querySelectorAll(".steam-launch-btn");
+  steamButtons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const appId = btn.getAttribute("data-steam-appid");
+      const fallbackUrl = btn.getAttribute("href");
+      if (!appId) return;
+
+      // Se for clique com botão direito ou ctrl/cmd (nova aba intencional), deixa o comportamento padrão
+      if (e.metaKey || e.ctrlKey || e.button !== 0) return;
+
+      e.preventDefault();
+
+      const steamProtocolUri = `steam://store/${appId}`;
+      let appOpened = false;
+
+      // Se o app abrir e a janela perder o foco dentro de 1.5s, consideramos que o app da Steam foi acionado
+      const handleBlur = () => {
+        appOpened = true;
+      };
+      window.addEventListener("blur", handleBlur, { once: true });
+
+      // Tenta acionar o protocolo da Steam pelo iframe invisível
+      const iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = steamProtocolUri;
+      document.body.appendChild(iframe);
+
+      setTimeout(() => {
+        document.body.removeChild(iframe);
+        window.removeEventListener("blur", handleBlur);
+        // Se a janela não perdeu o foco, o protocolo falhou/não está instalado: abre no navegador
+        if (!appOpened) {
+          window.open(fallbackUrl, "_blank", "noopener,noreferrer");
+        }
+      }, 1200);
     });
   });
 });

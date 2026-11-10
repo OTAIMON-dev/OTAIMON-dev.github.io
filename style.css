@@ -1,6 +1,6 @@
 /* ==========================================================================
-   OTA IMON STUDIOS - CLEAN RETRO-TACTICAL THEME
-   High-contrast, cyberpunk/sci-fi terminal accents, responsive design.
+   OTA IMON STUDIOS - RETRO-TACTICAL THEME
+   High-contrast, cyberpunk terminal aesthetic, zero fluff.
    ========================================================================== */
 
 :root {
@@ -118,19 +118,38 @@ body {
   color: var(--border-color);
 }
 
+/* 16:9 BANNER WRAPPERS */
+.banner-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.ratio-16-9-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* HERO SECTION */
 .hero-section {
   position: relative;
-  min-height: 85vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 90px 24px 60px;
+  padding: 70px 24px 60px;
 }
 
 .hero-content {
-  max-width: 840px;
+  max-width: 860px;
   margin: 0 auto;
 }
 
@@ -164,27 +183,18 @@ body {
   100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(255, 42, 75, 0); }
 }
 
-.game-title {
-  font-family: var(--font-display);
-  font-size: clamp(42px, 8vw, 76px);
-  line-height: 1.05;
-  font-weight: 800;
-  letter-spacing: 2px;
-  margin-bottom: 24px;
-  text-transform: uppercase;
-}
-
-.highlight-red {
-  color: var(--accent-red);
-  text-shadow: 0 0 30px rgba(255, 42, 75, 0.4);
+.hero-section .banner-wrapper {
+  margin-bottom: 28px;
+  border-color: rgba(255, 42, 75, 0.3);
+  box-shadow: 0 12px 40px rgba(255, 42, 75, 0.15);
 }
 
 .game-pitch {
-  font-size: clamp(16px, 2.5vw, 20px);
+  font-size: clamp(16px, 2.2vw, 19px);
   color: var(--text-muted);
   line-height: 1.6;
-  margin: 0 auto 36px;
-  max-width: 700px;
+  margin: 0 auto 32px;
+  max-width: 720px;
 }
 
 .cta-group {
@@ -192,7 +202,7 @@ body {
   justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 36px;
+  margin-bottom: 32px;
 }
 
 .btn {
@@ -264,7 +274,7 @@ body {
 /* SECTION TITLES */
 .section-title {
   font-family: var(--font-display);
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 800;
   letter-spacing: 2px;
   margin-bottom: 32px;
@@ -277,35 +287,15 @@ body {
   margin-right: 8px;
 }
 
-/* 2. MEDIA SECTION */
+/* 2. SCREENSHOTS SECTION */
 .media-section {
-  padding: 80px 0;
+  padding: 70px 0;
   border-top: 1px solid var(--border-color);
-}
-
-.video-wrapper {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 ratio */
-  height: 0;
-  overflow: hidden;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  background: #000;
-  margin-bottom: 32px;
-}
-
-.video-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
 }
 
 .screenshots-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
 
@@ -351,8 +341,8 @@ body {
 
 .games-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 28px;
 }
 
 .game-card {
@@ -370,11 +360,10 @@ body {
   transform: translateY(-4px);
 }
 
-.card-thumb {
-  height: 180px;
-  background-size: cover;
-  background-position: center;
-  background-color: #1e293b;
+.card-banner {
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .card-body {
@@ -404,20 +393,37 @@ body {
   font-size: 14px;
   color: var(--text-muted);
   line-height: 1.5;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   flex: 1;
 }
 
-.link-btn {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--accent-cyan);
-  text-decoration: none;
+/* Store Badge Buttons */
+.store-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.link-btn:hover {
-  text-decoration: underline;
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.store-badge:hover {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
 }
 
 /* 4. PRESS SECTION */

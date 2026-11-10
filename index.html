@@ -6,11 +6,10 @@
   <title>OTA IMON Studios | ZANKOKURYU GETSUDOOM</title>
   <meta name="description" content="Official website of OTA IMON Studios. Creators of ZANKOKURYU GETSUDOOM, Wolfstride, and Zet Zillions.">
   
-  <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="ZANKOKURYU GETSUDOOM | OTA IMON Studios">
   <meta property="og:description" content="A tactical roguelite dispatch sim where cards, dice, and strategy collide. Wishlist now on Steam.">
-  <meta property="og:image" content="assets/og-preview.jpg">
+  <meta property="og:image" content="assets/ZANKOKURYU_GETSUDOOM.jpg">
 
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,14 +18,14 @@
 </head>
 <body>
 
-  <!-- Navigation / Studio Bar -->
+  <!-- Top Navigation with Language Switcher -->
   <header class="top-nav">
     <div class="nav-container">
       <a href="#hero" class="studio-brand">
         <span class="brand-bracket">[</span>OTA IMON STUDIOS<span class="brand-bracket">]</span>
       </a>
 
-      <!-- Language Switcher (Ready for Localization) -->
+      <!-- Language Toggle -->
       <div class="lang-switch" id="langSwitch">
         <button class="lang-btn active" data-lang="en">EN</button>
         <span class="lang-divider">/</span>
@@ -36,30 +35,37 @@
   </header>
 
   <main>
-    <!-- 1. HERO SECTION (Current Game Spotlight) -->
+    <!-- 1. HERO SECTION (ZANKOKURYU GETSUDOOM Spotlight) -->
     <section id="hero" class="hero-section">
-      <div class="hero-backdrop"></div>
       <div class="hero-content">
         <div class="badge-status">
           <span class="pulse-dot"></span>
           <span data-i18n="hero_status">IN ACTIVE DEVELOPMENT • STEAM WISHLIST LIVE</span>
         </div>
 
-        <h1 class="game-title">ZANKOKURYU<br><span class="highlight-red">GETSUDOOM</span></h1>
+        <!-- 16:9 Banner Image (Replaces Text Logo) -->
+        <div class="banner-wrapper">
+          <img src="assets/ZANKOKURYU_GETSUDOOM.jpg" alt="ZANKOKURYU GETSUDOOM" class="ratio-16-9-img" loading="eager">
+        </div>
         
         <p class="game-pitch" data-i18n="hero_pitch">
           A tactical roguelite dispatch sim where cards, dice, and strategy collide. Deploy a squad of flawed specialists to deadly spaceship crises, manipulate dice pools, manage failing stations, and survive long enough to slay the Moon Dragon.
         </p>
 
         <div class="cta-group">
+          <!-- Steam Protocol with Browser Fallback -->
           <a href="https://store.steampowered.com/app/5070890/ZANKOKURYU_GETSUDOOM/?utm_source=studio_site&utm_medium=hero_btn&utm_campaign=direct" 
-             target="_blank" rel="noopener noreferrer" class="btn btn-steam">
-            <svg class="steam-icon" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+             data-steam-appid="5070890"
+             class="btn btn-steam steam-launch-btn"
+             target="_blank" rel="noopener noreferrer">
+            <svg class="steam-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
               <path d="M12 2C6.48 2 2 6.48 2 12c0 4.8 3.4 8.81 7.96 9.76l2.09-3.03a3.5 3.5 0 0 1-1.55-2.93c0-.18.02-.36.05-.53l-3.21-1.33c-.47.63-1.22 1.04-2.06 1.04-1.42 0-2.58-1.16-2.58-2.58 0-1.42 1.16-2.58 2.58-2.58 1.34 0 2.44 1.03 2.56 2.34l3.24 1.34c.5-.39 1.12-.64 1.8-.68l1.49-3.08A3.5 3.5 0 0 1 12 8.5c1.93 0 3.5 1.57 3.5 3.5 0 1.93-1.57 3.5-3.5 3.5-.27 0-.53-.03-.78-.1l-2.07 3a9.98 9.98 0 0 0 2.85.4c5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
             </svg>
             <span data-i18n="btn_wishlist">WISHLIST ON STEAM</span>
           </a>
-          <a href="#media" class="btn btn-secondary" data-i18n="btn_trailer">WATCH TRAILER</a>
+          <a href="https://drive.google.com/drive/folders/19DLbqercZlJgtvkZoFPj9ZsTOVeIPwG4?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            <span data-i18n="btn_presskit_quick">PRESS KIT (DRIVE)</span>
+          </a>
         </div>
 
         <div class="game-meta">
@@ -72,40 +78,29 @@
       </div>
     </section>
 
-    <!-- 2. MEDIA & GAMEPLAY PREVIEW -->
-    <section id="media" class="media-section">
+    <!-- 2. GAMEPLAY SCREENSHOTS (Trailer removed) -->
+    <section id="screenshots" class="media-section">
       <div class="container">
-        <h2 class="section-title"><span class="title-index">01.</span> <span data-i18n="sec_gameplay">GAMEPLAY & TRAILER</span></h2>
+        <h2 class="section-title"><span class="title-index">01.</span> <span data-i18n="sec_screenshots">GAMEPLAY PREVIEWS</span></h2>
         
-        <!-- Video Container (16:9 responsive embed) -->
-        <div class="video-wrapper">
-          <iframe 
-            src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?rel=0" 
-            title="ZANKOKURYU GETSUDOOM Trailer" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
-        </div>
-
-        <!-- Screenshots Grid -->
         <div class="screenshots-grid">
           <div class="screen-card">
-            <img src="assets/screen_01.jpg" alt="Crisis Dispatch Management" loading="lazy">
+            <img src="assets/screen_01.jpg" alt="Dispatch Interface" loading="lazy">
             <span class="screen-label" data-i18n="scr_label1">DISPATCH INTERFACE</span>
           </div>
           <div class="screen-card">
-            <img src="assets/screen_02.jpg" alt="Dice Manipulation & Crew Traits" loading="lazy">
+            <img src="assets/screen_02.jpg" alt="Dice & Trauma Mechanics" loading="lazy">
             <span class="screen-label" data-i18n="scr_label2">DICE & TRAUMA MECHANICS</span>
           </div>
           <div class="screen-card">
-            <img src="assets/screen_03.jpg" alt="Moon Dragon Crisis" loading="lazy">
+            <img src="assets/screen_03.jpg" alt="Vessel Crises" loading="lazy">
             <span class="screen-label" data-i18n="scr_label3">VESSEL CRISES</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 3. STUDIO CATALOG / RELEASES -->
+    <!-- 3. STUDIO RELEASES (Catalog) -->
     <section id="catalog" class="catalog-section">
       <div class="container">
         <h2 class="section-title"><span class="title-index">02.</span> <span data-i18n="sec_catalog">STUDIO RELEASES</span></h2>
@@ -113,14 +108,21 @@
         <div class="games-grid">
           <!-- Zet Zillions -->
           <article class="game-card">
-            <div class="card-thumb" style="background-image: url('assets/zet_cover.jpg');"></div>
+            <div class="banner-wrapper card-banner">
+              <img src="assets/Zet_Zillions.jpg" alt="Zet Zillions" class="ratio-16-9-img" loading="lazy">
+            </div>
             <div class="card-body">
               <span class="card-tag">ROGUELIKE DECKBUILDER</span>
               <h3>ZET ZILLIONS</h3>
               <p data-i18n="zet_desc">A story-driven roguelike deckbuilder with over-the-top space trash action, planet fusion, and wild card combos. Published by Raw Fury.</p>
-              <div class="card-actions">
-                <a href="https://store.steampowered.com/app/2229580/Zet_Zillions/" target="_blank" rel="noopener noreferrer" class="link-btn">
-                  Steam Store ↗
+              
+              <div class="store-links">
+                <a href="https://store.steampowered.com/app/2229560/Zet_Zillions/" 
+                   data-steam-appid="2229560" 
+                   class="store-badge steam-launch-btn"
+                   target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.8 3.4 8.81 7.96 9.76l2.09-3.03a3.5 3.5 0 0 1-1.55-2.93c0-.18.02-.36.05-.53l-3.21-1.33c-.47.63-1.22 1.04-2.06 1.04-1.42 0-2.58-1.16-2.58-2.58 0-1.42 1.16-2.58 2.58-2.58 1.34 0 2.44 1.03 2.56 2.34l3.24 1.34c.5-.39 1.12-.64 1.8-.68l1.49-3.08A3.5 3.5 0 0 1 12 8.5c1.93 0 3.5 1.57 3.5 3.5 0 1.93-1.57 3.5-3.5 3.5-.27 0-.53-.03-.78-.1l-2.07 3a9.98 9.98 0 0 0 2.85.4c5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
+                  Steam
                 </a>
               </div>
             </div>
@@ -128,14 +130,29 @@
 
           <!-- Wolfstride -->
           <article class="game-card">
-            <div class="card-thumb" style="background-image: url('assets/wolfstride_cover.jpg');"></div>
+            <div class="banner-wrapper card-banner">
+              <img src="assets/Wolfstride.jpg" alt="Wolfstride" class="ratio-16-9-img" loading="lazy">
+            </div>
             <div class="card-body">
               <span class="card-tag">MECHA RPG / ADVENTURE</span>
               <h3>WOLFSTRIDE</h3>
               <p data-i18n="wolf_desc">A stylish monochrome RPG about three former partners in crime navigating a giant mecha tournament. Published by Raw Fury.</p>
-              <div class="card-actions">
-                <a href="https://store.steampowered.com/app/1331210/Wolfstride/" target="_blank" rel="noopener noreferrer" class="link-btn">
-                  Steam Store ↗
+              
+              <div class="store-links">
+                <a href="https://store.steampowered.com/app/1331210/Wolfstride/" 
+                   data-steam-appid="1331210" 
+                   class="store-badge steam-launch-btn"
+                   target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.8 3.4 8.81 7.96 9.76l2.09-3.03a3.5 3.5 0 0 1-1.55-2.93c0-.18.02-.36.05-.53l-3.21-1.33c-.47.63-1.22 1.04-2.06 1.04-1.42 0-2.58-1.16-2.58-2.58 0-1.42 1.16-2.58 2.58-2.58 1.34 0 2.44 1.03 2.56 2.34l3.24 1.34c.5-.39 1.12-.64 1.8-.68l1.49-3.08A3.5 3.5 0 0 1 12 8.5c1.93 0 3.5 1.57 3.5 3.5 0 1.93-1.57 3.5-3.5 3.5-.27 0-.53-.03-.78-.1l-2.07 3a9.98 9.98 0 0 0 2.85.4c5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
+                  Steam
+                </a>
+                <a href="https://www.nintendo.com/pt-br/store/products/wolfstride-switch/?srsltid=AYCX9vJfjEnYFWUB7ToTm8vy2txchr0lLAsflYnYaL71O8DgIuzKLCll" 
+                   class="store-badge" target="_blank" rel="noopener noreferrer">
+                  Nintendo Switch
+                </a>
+                <a href="https://www.gog.com/en/game/wolfstride" 
+                   class="store-badge" target="_blank" rel="noopener noreferrer">
+                  GOG.com
                 </a>
               </div>
             </div>
@@ -144,7 +161,7 @@
       </div>
     </section>
 
-    <!-- 4. PRESS & CONTACT (Zero Friction for Media) -->
+    <!-- 4. PRESS & INQUIRIES -->
     <section id="press" class="press-section">
       <div class="container">
         <div class="press-box">
@@ -152,9 +169,8 @@
             <h2 data-i18n="press_title">PRESS KIT & INQUIRIES</h2>
             <p data-i18n="press_desc">Looking for high-res key art, clean gameplay screenshots, studio fact sheets, or review keys?</p>
             <div class="press-buttons">
-              <!-- Replace with Google Drive link or zip download -->
-              <a href="https://drive.google.com/your-press-kit-folder" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                <span data-i18n="btn_presskit">DOWNLOAD PRESS KIT (ZIP / DRIVE)</span>
+              <a href="https://drive.google.com/drive/folders/19DLbqercZlJgtvkZoFPj9ZsTOVeIPwG4?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <span data-i18n="btn_presskit">OFFICIAL PRESS KIT (GOOGLE DRIVE) ↗</span>
               </a>
               <a href="mailto:contact@otaimon.com" class="btn btn-outline">
                 <span data-i18n="btn_contact">PRESS INQUIRIES: CONTACT@OTAIMON.COM</span>
@@ -168,7 +184,7 @@
               <li><strong data-i18n="fact_loc_label">Location:</strong> São Paulo, Brazil</li>
               <li><strong data-i18n="fact_fnd_label">Founded:</strong> 2020</li>
               <li><strong data-i18n="fact_pub_label">Publishing:</strong> Independent / Self-Published</li>
-              <li><strong>Inquiries:</strong> contact@otaimon.com</li>
+              <li><strong>Contact:</strong> contact@otaimon.com</li>
             </ul>
           </div>
         </div>
