@@ -1,10 +1,5 @@
 // Vanilla JS Localization & Steam Protocol Fallback
-document.addEventListener("DOMContentLoaded", () => {
-  // 1. Footer Year
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  // 2. Localization Dictionary for 9 languages
+(function () {
   const translations = {
     en: {
       hero_status: "IN ACTIVE DEVELOPMENT • STEAM WISHLIST LIVE",
@@ -251,86 +246,138 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // 3. Language Switching
-  const langButtons = document.querySelectorAll(".lang-btn");
-  
   function applyLanguage(lang) {
     if (!translations[lang]) return;
-    
-    document.querySelectorAll("[data-i18n]").forEach(el => {
+
+    // Update text for all elements with data-i18n
+    const elements = document.querySelectorAll("[data-i18n]");
+    elements.forEach(function (el) {
       const key = el.getAttribute("data-i18n");
-      if (translations[lang][key]) {
+      if (translations[lang] && translations[lang][key] !== undefined) {
         el.textContent = translations[lang][key];
       }
     });
 
-    langButtons.forEach(btn => {
-      btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+    // Update active state on buttons
+    const langBtns = document.querySelectorAll(".lang-btn");
+    langBtns.forEach(function (btn) {
+      if (btn.getAttribute("data-lang") === lang) {
+        btn.classList.add("active");
+      } else {
+        btn.classList.remove("active");
+      }
     });
 
     try {
       localStorage.setItem("preferred_lang", lang);
-    } catch(e) {}
+    } catch (e) {
+      // Storage access might be denied in some sandboxes/iframes
+    }
   }
 
-  let userLang = "en";
-  try {
-    const saved = localStorage.getItem("preferred_lang");
-    if (saved && translations[saved]) {
-      userLang = saved;
-    } else if (navigator.language) {
-      const navLang = navigator.language.toLowerCase();
-      if (navLang.startsWith("pt")) userLang = "pt";
-      else if (navLang.startsWith("fr")) userLang = "fr";
-      else if (navLang.startsWith("de")) userLang = "de";
-      else if (navLang.startsWith("es")) userLang = "es";
-      else if (navLang.startsWith("ja")) userLang = "ja";
-      else if (navLang.startsWith("ko")) userLang = "ko";
-      else if (navLang.startsWith("ru")) userLang = "ru";
-      else if (navLang.startsWith("zh")) userLang = "zh";
-    }
-  } catch(e) {}
+  function initLanguageSwitcher() {
+    // Determine initial language
+    let initialLang = "en";
+    try {
+      const saved = localStorage.getItem("preferred_lang");
+      if (saved && translations[saved]) {
+        initialLang = saved;
+      } else if (navigator.language) {
+        const navLang = navigator.language.toLowerCase();
+        if (navLang.startsWith("pt")) initialLang = "pt";
+        else if (navLang.startsWith("fr")) initialLang = "fr";
+        else if (navLang.startsWith("de")) initialLang = "de";
+        else if (navLang.startsWith("es")) initialLang = "es";
+        else if (navLang.startsWith("ja")) initialLang = "ja";
+        else if (navLang.startsWith("ko")) initialLang = "ko";
+        else if (navLang.startsWith("ru")) initialLang = "ru";
+        else if (navLang.startsWith("zh")) initialLang = "zh";
+      }
+    } catch (e) {}
 
-  applyLanguage(userLang);
+    applyLanguage(initialLang);
 
-  langButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      applyLanguage(btn.getAttribute("data-lang"));
-    });
-  });
-
-  // 4. Steam Protocol Handler (Tenta abrir no cliente Steam; fallback para o navegador)
-  const steamButtons = document.querySelectorAll(".steam-launch-btn");
-  steamButtons.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      const appId = btn.getAttribute("data-steam-appid");
-      const fallbackUrl = btn.getAttribute("href");
-      if (!appId) return;
-
-      if (e.metaKey || e.ctrlKey || e.button !== 0) return;
-
-      e.preventDefault();
-
-      const steamProtocolUri = `steam://store/${appId}`;
-      let appOpened = false;
-
-      const handleBlur = () => {
-        appOpened = true;
-      };
-      window.addEventListener("blur", handleBlur, { once: true });
-
-      const iframe = document.createElement("iframe");
-      iframe.style.display = "none";
-      iframe.src = steamProtocolUri;
-      document.body.appendChild(iframe);
-
-      setTimeout(() => {
-        document.body.removeChild(iframe);
-        window.removeEventListener("blur", handleBlur);
-        if (!appOpened) {
-          window.open(fallbackUrl, "_blank", "noopener,noreferrer");
+    // Event delegation on lang-switch container as well as direct buttons
+    const switchContainer = document.getElementById("langSwitch");
+    if (switchContainer) {
+      switchContainer.addEventListener("click", function (e) {
+        const btn = e.target.closest(".lang-btn");
+        if (btn) {
+          e.preventDefault();
+          const targetLang = btn.getAttribute("data-lang");
+          if (targetLang) {
+            applyLanguage(targetLang);
+          }
         }
-      }, 1200);
+      });
+    }
+
+    const langBtns = document.querySelectorAll(".lang-btn");
+    langBtns.forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        const targetLang = this.getAttribute("data-lang");
+        if (targetLang) {
+          applyLanguage(targetLang);
+        }
+      });
     });
-  });
-});
+  }
+
+  function initSteamProtocol() {
+    const steamButtons = document.querySelectorAll(".steam-launch-btn");
+    steamButtons.forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        const appId = btn.getAttribute("data-steam-appid");
+        const fallbackUrl = btn.getAttribute("href");
+        if (!appId) return;
+
+        if (e.metaKey || e.ctrlKey || e.button !== 0) return;
+
+        e.preventDefault();
+
+        const steamProtocolUri = "steam://store/" + appId;
+        let appOpened = false;
+
+        const handleBlur = function () {
+          appOpened = true;
+        };
+        window.addEventListener("blur", handleBlur, { once: true });
+
+        const iframe = document.createElement("iframe");
+        iframe.style.display = "none";
+        iframe.src = steamProtocolUri;
+        document.body.appendChild(iframe);
+
+        setTimeout(function () {
+          if (iframe.parentNode) {
+            document.body.removeChild(iframe);
+          }
+          window.removeEventListener("blur", handleBlur);
+          if (!appOpened) {
+            window.open(fallbackUrl, "_blank", "noopener,noreferrer");
+          }
+        }, 1200);
+      });
+    });
+  }
+
+  function initYear() {
+    const yearEl = document.getElementById("year");
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
+  }
+
+  function setup() {
+    initYear();
+    initLanguageSwitcher();
+    initSteamProtocol();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setup);
+  } else {
+    setup();
+  }
+})();

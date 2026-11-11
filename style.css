@@ -6,12 +6,17 @@
    - Light Titles & Texts: #E4E2CD
    ========================================================================== */
 
+/* Multi-format font-face declaration with case fallbacks */
 @font-face {
   font-family: 'Boldonse';
   src: url('assets/Boldonse.woff2') format('woff2'),
+       url('assets/boldonse.woff2') format('woff2'),
        url('assets/Boldonse.woff') format('woff'),
-       url('assets/Boldonse.ttf') format('truetype');
-  font-weight: 400 600;
+       url('assets/boldonse.woff') format('woff'),
+       url('assets/Boldonse.ttf') format('truetype'),
+       url('assets/boldonse.ttf') format('truetype'),
+       url('Boldonse.ttf') format('truetype');
+  font-weight: 400 900;
   font-style: normal;
   font-display: swap;
 }
@@ -122,27 +127,30 @@ body {
   display: flex;
   flex-direction: column;
   line-height: 1.1;
+  text-align: left;
 }
 
-/* Top bar text typography matching reference image exactly */
+/* Studio brand title & tagline styled strictly to match the requested visual */
 .brand-title {
-  font-family: var(--font-boldonse);
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: #FFFFFF;
-  text-transform: uppercase;
+  font-family: 'Boldonse', 'Chakra Petch', 'Space Grotesk', sans-serif !important;
+  font-size: 21px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  color: #FFFFFF !important;
+  text-transform: uppercase !important;
+  display: block !important;
   -webkit-font-smoothing: antialiased;
 }
 
 .brand-tagline {
-  font-family: var(--font-boldonse);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.6px;
-  color: #F30B5E;
-  text-transform: uppercase;
-  margin-top: 1px;
+  font-family: 'Boldonse', 'Chakra Petch', 'Space Grotesk', sans-serif !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.8px !important;
+  color: #F30B5E !important;
+  text-transform: uppercase !important;
+  display: block !important;
+  margin-top: 2px !important;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -156,38 +164,38 @@ body {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  background: rgba(20, 26, 36, 0.7);
+  background: rgba(20, 26, 36, 0.8);
   border: 1px solid var(--border-color);
   padding: 4px 6px;
   border-radius: 6px;
   overflow-x: auto;
-  max-width: 100%;
 }
 
 .lang-btn {
-  background: none;
+  background: transparent;
   border: none;
   color: var(--text-dim);
   cursor: pointer;
-  font-weight: 600;
-  padding: 4px 6px;
+  font-weight: 700;
+  padding: 5px 8px;
   border-radius: 4px;
   font-family: var(--font-mono);
-  font-size: 11.5px;
-  transition: all 0.2s;
+  font-size: 12px;
+  transition: all 0.2s ease;
   white-space: nowrap;
+  outline: none;
+  user-select: none;
 }
 
 .lang-btn:hover {
   color: var(--text-main);
-  background: rgba(228, 226, 205, 0.08);
+  background: rgba(228, 226, 205, 0.12);
 }
 
 .lang-btn.active {
-  color: #fff;
-  background: var(--zanko-bg);
+  color: #FFFFFF !important;
+  background: var(--zanko-bg) !important;
+  box-shadow: 0 0 8px rgba(243, 11, 94, 0.4);
 }
 
 /* ==========================================================================
@@ -351,7 +359,11 @@ body {
   color: rgba(228, 226, 205, 0.5);
 }
 
-/* Social Callout Section with styled Discord, Twitter, Instagram buttons */
+/* ==========================================================================
+   HERO SOCIAL CALLOUT & BUTTONS (Discord, Twitter / X, Instagram)
+   - Fundo 110022
+   - Cor do texto: E4E2CD
+   ========================================================================== */
 .hero-social-callout {
   margin-top: 36px;
   padding-top: 28px;
@@ -359,7 +371,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
 }
 
 .callout-label {
@@ -368,7 +380,7 @@ body {
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #110022;
-  background: rgba(228, 226, 205, 0.92);
+  background: rgba(228, 226, 205, 0.95);
   padding: 5px 16px;
   border-radius: 14px;
   font-weight: 700;
@@ -381,23 +393,48 @@ body {
   gap: 14px;
 }
 
-.btn-social-hero {
-  background: var(--zanko-btn-bg);
-  color: var(--text-main);
-  border: 1px solid rgba(228, 226, 205, 0.3);
-  padding: 12px 24px;
-  font-size: 13px;
-  letter-spacing: 1.2px;
-  border-radius: 6px;
-  box-shadow: 0 6px 18px rgba(17, 0, 34, 0.45);
+/* Direct explicit styling for social buttons with #110022 bg and #E4E2CD text */
+.btn-social-hero,
+a.btn-social-hero,
+a.btn-social-hero:visited {
+  background: #110022 !important;
+  color: #E4E2CD !important;
+  border: 1px solid rgba(228, 226, 205, 0.35) !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  padding: 14px 28px !important;
+  border-radius: 6px !important;
+  font-family: 'Boldonse', 'Chakra Petch', 'Space Grotesk', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 13.5px !important;
+  letter-spacing: 1.2px !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 6px 18px rgba(17, 0, 34, 0.45) !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn-social-hero svg {
+  fill: #E4E2CD !important;
+  color: #E4E2CD !important;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
 }
 
 .btn-social-hero:hover {
-  background: var(--zanko-btn-hover);
-  border-color: var(--text-main);
-  transform: translateY(-2px);
-  color: #fff;
-  box-shadow: 0 8px 24px rgba(17, 0, 34, 0.6);
+  background: #220044 !important;
+  border-color: #E4E2CD !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(17, 0, 34, 0.6) !important;
+}
+
+.btn-social-hero:hover svg {
+  fill: #FFFFFF !important;
+  color: #FFFFFF !important;
+  transform: scale(1.1);
 }
 
 /* ==========================================================================
