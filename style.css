@@ -1,12 +1,11 @@
 /* ==========================================================================
-   OTA IMON STUDIOS - RETRO-TACTICAL THEME
+   OTA IMON STUDIOS - RETRO-TACTICAL THEME (SHARP / 0 RADIUS)
    Palette:
    - Zanko Background: #F30B5E
    - Hero Buttons & Status Badge: #110022
    - Light Titles & Texts: #E4E2CD
    ========================================================================== */
 
-/* Multi-format font-face declaration with case fallbacks */
 @font-face {
   font-family: 'Boldonse';
   src: url('assets/Boldonse.woff2') format('woff2'),
@@ -42,6 +41,7 @@
   --accent-cyan: #38bdf8;
 
   /* Typography Stack */
+  --font-karantina: 'Karantina', sans-serif;
   --font-boldonse: 'Boldonse', 'Chakra Petch', 'Space Grotesk', sans-serif;
   --font-display: 'Chakra Petch', sans-serif;
   --font-body: 'Electrolize', -apple-system, sans-serif;
@@ -52,6 +52,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  border-radius: 0 !important; /* STRICTLY FLAT & SQUARE - NO ROUNDED CORNERS */
 }
 
 html {
@@ -111,7 +112,6 @@ body {
   width: auto;
   aspect-ratio: 1412 / 1694;
   object-fit: contain;
-  border-radius: 4px;
   border: 1px solid var(--border-color);
   background: #000;
   display: block;
@@ -126,31 +126,34 @@ body {
 .brand-text-group {
   display: flex;
   flex-direction: column;
-  line-height: 1.1;
+  line-height: 1.0;
   text-align: left;
 }
 
-/* Studio brand title & tagline styled strictly to match the requested visual */
+/* Brand Title: Font Karantina */
 .brand-title {
-  font-family: 'Boldonse', 'Chakra Petch', 'Space Grotesk', sans-serif !important;
-  font-size: 21px !important;
+  font-family: var(--font-karantina) !important;
+  font-size: 32px !important;
   font-weight: 700 !important;
-  letter-spacing: 0.5px !important;
+  letter-spacing: 1.5px !important;
   color: #FFFFFF !important;
   text-transform: uppercase !important;
+  line-height: 0.9 !important;
   display: block !important;
   -webkit-font-smoothing: antialiased;
 }
 
+/* Brand Tagline: Slightly smaller to prevent overlap */
 .brand-tagline {
-  font-family: 'Boldonse', 'Chakra Petch', 'Space Grotesk', sans-serif !important;
-  font-size: 13.5px !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.8px !important;
+  font-family: var(--font-boldonse) !important;
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 1px !important;
   color: #F30B5E !important;
   text-transform: uppercase !important;
   display: block !important;
-  margin-top: 2px !important;
+  margin-top: 3px !important;
+  line-height: 1.1 !important;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -163,11 +166,10 @@ body {
 .lang-switch {
   display: flex;
   align-items: center;
-  gap: 4px;
-  background: rgba(20, 26, 36, 0.8);
+  gap: 2px;
+  background: rgba(20, 26, 36, 0.85);
   border: 1px solid var(--border-color);
-  padding: 4px 6px;
-  border-radius: 6px;
+  padding: 4px;
   overflow-x: auto;
 }
 
@@ -178,9 +180,8 @@ body {
   cursor: pointer;
   font-weight: 700;
   padding: 5px 8px;
-  border-radius: 4px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11.5px;
   transition: all 0.2s ease;
   white-space: nowrap;
   outline: none;
@@ -227,7 +228,6 @@ body {
   color: var(--text-main);
   font-size: 12.5px;
   padding: 8px 20px;
-  border-radius: 24px;
   margin-bottom: 24px;
   box-shadow: 0 4px 16px rgba(17, 0, 34, 0.4);
 }
@@ -244,7 +244,6 @@ body {
   width: 8px;
   height: 8px;
   background-color: var(--zanko-bg);
-  border-radius: 50%;
   animation: pulse 1.8s infinite;
 }
 
@@ -263,7 +262,6 @@ body {
 .banner-wrapper {
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: 8px;
   overflow: hidden;
   border: 1px solid var(--border-color);
   background: #000;
@@ -304,7 +302,6 @@ body {
   font-size: 14.5px;
   letter-spacing: 1px;
   text-decoration: none;
-  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -362,7 +359,9 @@ body {
 /* ==========================================================================
    HERO SOCIAL CALLOUT & BUTTONS (Discord, Twitter / X, Instagram)
    - Fundo 110022
-   - Cor do texto: E4E2CD
+   - Texto E4E2CD
+   - Peso mais fino (500), acompanhando os outros botões da página
+   - Cantos retos (sem border-radius)
    ========================================================================== */
 .hero-social-callout {
   margin-top: 36px;
@@ -382,8 +381,7 @@ body {
   color: #110022;
   background: rgba(228, 226, 205, 0.95);
   padding: 5px 16px;
-  border-radius: 14px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .hero-social-buttons {
@@ -393,7 +391,6 @@ body {
   gap: 14px;
 }
 
-/* Direct explicit styling for social buttons with #110022 bg and #E4E2CD text */
 .btn-social-hero,
 a.btn-social-hero,
 a.btn-social-hero:visited {
@@ -406,9 +403,8 @@ a.btn-social-hero:visited {
   justify-content: center !important;
   gap: 10px !important;
   padding: 14px 28px !important;
-  border-radius: 6px !important;
-  font-family: 'Boldonse', 'Chakra Petch', 'Space Grotesk', sans-serif !important;
-  font-weight: 600 !important;
+  font-family: var(--font-boldonse) !important;
+  font-weight: 500 !important; /* Mais fino, calibrado igual aos outros botões */
   font-size: 13.5px !important;
   letter-spacing: 1.2px !important;
   text-transform: uppercase !important;
@@ -469,7 +465,6 @@ a.btn-social-hero:visited {
 
 .screen-card {
   position: relative;
-  border-radius: 6px;
   overflow: hidden;
   border: 1px solid var(--border-color);
   background: var(--bg-surface);
@@ -519,7 +514,6 @@ a.btn-social-hero:visited {
 .game-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -533,7 +527,6 @@ a.btn-social-hero:visited {
 
 .card-banner {
   border: none;
-  border-radius: 0;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -587,7 +580,6 @@ a.btn-social-hero:visited {
   color: var(--text-main);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border-color);
-  border-radius: 4px;
   text-decoration: none;
   transition: all 0.2s;
 }
@@ -609,7 +601,6 @@ a.btn-social-hero:visited {
 .press-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
   padding: 36px 40px;
   position: relative;
   overflow: hidden;
@@ -689,7 +680,6 @@ a.btn-social-hero:visited {
 .studio-hero-box {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
-  border-radius: 12px;
   padding: 48px;
   display: grid;
   grid-template-columns: 240px 1fr;
@@ -715,7 +705,6 @@ a.btn-social-hero:visited {
   width: 100%;
   max-width: 240px;
   aspect-ratio: 1412 / 1694;
-  border-radius: 8px;
   overflow: hidden;
   border: 2px solid var(--border-color);
   background: #000;
@@ -815,7 +804,6 @@ a.btn-social-hero:visited {
   width: auto;
   aspect-ratio: 1412 / 1694;
   object-fit: contain;
-  border-radius: 3px;
   border: 1px solid var(--border-color);
   background: #000;
 }
@@ -833,7 +821,6 @@ a.btn-social-hero:visited {
   justify-content: center;
   width: 42px;
   height: 42px;
-  border-radius: 6px;
   background: rgba(228, 226, 205, 0.05);
   border: 1px solid var(--border-color);
   color: var(--text-main);
