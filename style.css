@@ -79,7 +79,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(7, 9, 14, 0.92);
+  background: rgba(7, 9, 14, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
   padding: 10px 24px;
@@ -102,7 +102,7 @@ body {
 }
 
 .nav-studio-logo {
-  height: 42px;
+  height: 44px;
   width: auto;
   aspect-ratio: 1412 / 1694;
   object-fit: contain;
@@ -121,78 +121,49 @@ body {
 .brand-text-group {
   display: flex;
   flex-direction: column;
-  line-height: 1.15;
+  line-height: 1.1;
 }
 
-.brand-text {
-  font-family: var(--font-body);
+/* Top bar text typography matching reference image exactly */
+.brand-title {
+  font-family: var(--font-boldonse);
+  font-size: 20px;
   font-weight: 700;
-  font-size: 16px;
-  letter-spacing: 2px;
-  color: var(--text-main);
-}
-
-.brand-bracket {
-  color: var(--zanko-bg);
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
 }
 
 .brand-tagline {
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  letter-spacing: 1.8px;
-  color: var(--text-dim);
-  font-weight: 500;
-  margin-top: 3px;
+  font-family: var(--font-boldonse);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  color: #F30B5E;
+  text-transform: uppercase;
+  margin-top: 1px;
+  -webkit-font-smoothing: antialiased;
 }
 
-.nav-actions {
+/* Language selector */
+.lang-switch-wrapper {
   display: flex;
   align-items: center;
-  gap: 14px;
-}
-
-/* Top bar Discord CTA */
-.nav-discord-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: rgba(88, 101, 242, 0.15);
-  border: 1px solid rgba(88, 101, 242, 0.45);
-  color: #E4E2CD;
-  padding: 6px 12px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-family: var(--font-body);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  transition: all 0.2s ease;
-}
-
-.nav-discord-btn svg {
-  color: #7289da;
-  transition: transform 0.2s;
-}
-
-.nav-discord-btn:hover {
-  background: #5865F2;
-  color: #fff;
-  border-color: #5865F2;
-  box-shadow: 0 0 12px rgba(88, 101, 242, 0.5);
-  transform: translateY(-1px);
-}
-
-.nav-discord-btn:hover svg {
-  color: #fff;
-  transform: scale(1.1);
 }
 
 .lang-switch {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-family: var(--font-body);
-  font-size: 13px;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  background: rgba(20, 26, 36, 0.7);
+  border: 1px solid var(--border-color);
+  padding: 4px 6px;
+  border-radius: 6px;
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 .lang-btn {
@@ -203,21 +174,20 @@ body {
   font-weight: 600;
   padding: 4px 6px;
   border-radius: 4px;
-  font-family: var(--font-body);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
   transition: all 0.2s;
+  white-space: nowrap;
 }
 
 .lang-btn:hover {
   color: var(--text-main);
+  background: rgba(228, 226, 205, 0.08);
 }
 
 .lang-btn.active {
   color: #fff;
-  background: rgba(243, 11, 94, 0.35);
-}
-
-.lang-divider {
-  color: var(--border-color);
+  background: var(--zanko-bg);
 }
 
 /* ==========================================================================
@@ -381,58 +351,53 @@ body {
   color: rgba(228, 226, 205, 0.5);
 }
 
-/* Social Media Callout at the end of Zanko Section */
+/* Social Callout Section with styled Discord, Twitter, Instagram buttons */
 .hero-social-callout {
   margin-top: 36px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(228, 226, 205, 0.22);
+  padding-top: 28px;
+  border-top: 1px solid rgba(228, 226, 205, 0.25);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
 .callout-label {
   font-family: var(--font-boldonse);
-  font-size: 11.5px;
+  font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #110022;
-  background: rgba(228, 226, 205, 0.9);
-  padding: 4px 14px;
-  border-radius: 12px;
+  background: rgba(228, 226, 205, 0.92);
+  padding: 5px 16px;
+  border-radius: 14px;
   font-weight: 700;
 }
 
-.callout-links {
+.hero-social-buttons {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 14px;
 }
 
-.callout-pill {
-  display: inline-flex;
-  align-items: center;
-  background: #110022;
-  color: #E4E2CD;
-  border: 1px solid rgba(228, 226, 205, 0.25);
-  padding: 6px 14px;
-  border-radius: 4px;
-  font-family: var(--font-body);
-  font-size: 12.5px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-  transition: all 0.2s ease;
+.btn-social-hero {
+  background: var(--zanko-btn-bg);
+  color: var(--text-main);
+  border: 1px solid rgba(228, 226, 205, 0.3);
+  padding: 12px 24px;
+  font-size: 13px;
+  letter-spacing: 1.2px;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(17, 0, 34, 0.45);
 }
 
-.callout-pill:hover {
-  background: #220044;
-  border-color: #E4E2CD;
-  color: #fff;
+.btn-social-hero:hover {
+  background: var(--zanko-btn-hover);
+  border-color: var(--text-main);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(17, 0, 34, 0.4);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(17, 0, 34, 0.6);
 }
 
 /* ==========================================================================
@@ -676,7 +641,7 @@ body {
 }
 
 /* ==========================================================================
-   5. FINAL STUDIO FACTS & PROFILE SECTION
+   5. FINAL STUDIO FACTS SECTION
    ========================================================================== */
 .studio-section {
   padding: 90px 0;
@@ -863,17 +828,16 @@ body {
 }
 
 /* RESPONSIVE */
-@media (max-width: 820px) {
+@media (max-width: 860px) {
   .nav-container {
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 
-  .nav-discord-text {
-    display: none;
-  }
-
-  .nav-discord-btn {
-    padding: 6px 8px;
+  .lang-switch-wrapper {
+    width: 100%;
+    overflow-x: auto;
   }
 
   .studio-hero-box {
