@@ -6,7 +6,6 @@
    - Light Titles & Texts: #E4E2CD
    ========================================================================== */
 
-/* Optional local font-face hook for Boldonse */
 @font-face {
   font-family: 'Boldonse';
   src: url('assets/Boldonse.woff2') format('woff2'),
@@ -25,8 +24,8 @@
   --border-focus: #F30B5E;
   
   /* Text palette */
-  --text-main: #E4E2CD;       /* Tom claro #E4E2CD */
-  --text-muted: #b9b69f;      /* Tom suave derivado */
+  --text-main: #E4E2CD;
+  --text-muted: #b9b69f;
   --text-dim: #7d8276;
   
   /* Zanko special brand palette */
@@ -83,7 +82,7 @@ body {
   background: rgba(7, 9, 14, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
-  padding: 12px 24px;
+  padding: 10px 24px;
 }
 
 .nav-container {
@@ -92,6 +91,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
 }
 
 .studio-brand {
@@ -102,7 +102,7 @@ body {
 }
 
 .nav-studio-logo {
-  height: 38px;
+  height: 42px;
   width: auto;
   aspect-ratio: 1412 / 1694;
   object-fit: contain;
@@ -118,6 +118,12 @@ body {
   transform: scale(1.05);
 }
 
+.brand-text-group {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
 .brand-text {
   font-family: var(--font-body);
   font-weight: 700;
@@ -128,6 +134,57 @@ body {
 
 .brand-bracket {
   color: var(--zanko-bg);
+}
+
+.brand-tagline {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 1.8px;
+  color: var(--text-dim);
+  font-weight: 500;
+  margin-top: 3px;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Top bar Discord CTA */
+.nav-discord-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(88, 101, 242, 0.15);
+  border: 1px solid rgba(88, 101, 242, 0.45);
+  color: #E4E2CD;
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+}
+
+.nav-discord-btn svg {
+  color: #7289da;
+  transition: transform 0.2s;
+}
+
+.nav-discord-btn:hover {
+  background: #5865F2;
+  color: #fff;
+  border-color: #5865F2;
+  box-shadow: 0 0 12px rgba(88, 101, 242, 0.5);
+  transform: translateY(-1px);
+}
+
+.nav-discord-btn:hover svg {
+  color: #fff;
+  transform: scale(1.1);
 }
 
 .lang-switch {
@@ -164,7 +221,7 @@ body {
 }
 
 /* ==========================================================================
-   1. HERO SECTION (ZANKOKURYU GETSUDOOM - COR DE FUNDO #F30B5E)
+   1. HERO SECTION (ZANKOKURYU GETSUDOOM)
    ========================================================================== */
 .hero-section {
   position: relative;
@@ -183,7 +240,6 @@ body {
   margin: 0 auto;
 }
 
-/* Badge in development - fundo #110022 */
 .badge-status {
   display: inline-flex;
   align-items: center;
@@ -198,7 +254,6 @@ body {
   box-shadow: 0 4px 16px rgba(17, 0, 34, 0.4);
 }
 
-/* Boldonse calibrada (mais fina) */
 .status-boldonse {
   font-family: var(--font-boldonse);
   font-weight: 500;
@@ -244,7 +299,6 @@ body {
   display: block;
 }
 
-/* Texto: A tactical roguelite dispatch sim... na cor #E4E2CD */
 .hero-section .game-pitch {
   font-family: var(--font-body);
   font-size: clamp(16.5px, 2.2vw, 19.5px);
@@ -260,7 +314,7 @@ body {
   justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .btn {
@@ -327,8 +381,62 @@ body {
   color: rgba(228, 226, 205, 0.5);
 }
 
+/* Social Media Callout at the end of Zanko Section */
+.hero-social-callout {
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(228, 226, 205, 0.22);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.callout-label {
+  font-family: var(--font-boldonse);
+  font-size: 11.5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #110022;
+  background: rgba(228, 226, 205, 0.9);
+  padding: 4px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.callout-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.callout-pill {
+  display: inline-flex;
+  align-items: center;
+  background: #110022;
+  color: #E4E2CD;
+  border: 1px solid rgba(228, 226, 205, 0.25);
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.callout-pill:hover {
+  background: #220044;
+  border-color: #E4E2CD;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(17, 0, 34, 0.4);
+}
+
 /* ==========================================================================
-   TITLES & OTHER SECTIONS
+   2. SCREENSHOTS SECTION
    ========================================================================== */
 .section-title {
   font-family: var(--font-display);
@@ -346,7 +454,6 @@ body {
   margin-right: 8px;
 }
 
-/* 2. SCREENSHOTS SECTION */
 .media-section {
   padding: 70px 0;
   border-top: 1px solid var(--border-color);
@@ -392,7 +499,9 @@ body {
   color: var(--text-muted);
 }
 
-/* 3. CATALOG SECTION */
+/* ==========================================================================
+   3. CATALOG SECTION
+   ========================================================================== */
 .catalog-section {
   padding: 80px 0;
   border-top: 1px solid var(--border-color);
@@ -459,7 +568,6 @@ body {
   flex: 1;
 }
 
-/* Store Badge Buttons (Without Steam Icon) */
 .store-links {
   display: flex;
   flex-wrap: wrap;
@@ -489,7 +597,7 @@ body {
 }
 
 /* ==========================================================================
-   4. DEDICATED PRESS SECTION (Harmonized Button Style)
+   4. DEDICATED PRESS SECTION
    ========================================================================== */
 .press-section {
   padding: 80px 0;
@@ -537,7 +645,6 @@ body {
   gap: 14px;
 }
 
-/* OFFICIAL PRESS KIT harmonizado com o estilo em volta dele */
 .btn-press {
   background: rgba(228, 226, 205, 0.05);
   color: var(--text-main);
@@ -568,7 +675,9 @@ body {
   border-color: var(--text-main);
 }
 
-/* 5. FINAL STUDIO FACTS & PROFILE SECTION */
+/* ==========================================================================
+   5. FINAL STUDIO FACTS & PROFILE SECTION
+   ========================================================================== */
 .studio-section {
   padding: 90px 0;
   border-top: 1px solid var(--border-color);
@@ -632,17 +741,6 @@ body {
   color: var(--text-main);
 }
 
-.studio-tag {
-  display: inline-block;
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--zanko-bg);
-  letter-spacing: 2px;
-  margin-bottom: 8px;
-  text-transform: uppercase;
-}
-
 .studio-specs-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -684,7 +782,7 @@ body {
 }
 
 /* ==========================================================================
-   FOOTER WITH SOCIAL MEDIA ICONS & STUDIO DEV BUTTON
+   FOOTER
    ========================================================================== */
 .site-footer {
   padding: 36px 0;
@@ -742,7 +840,6 @@ body {
   overflow: hidden;
 }
 
-/* Ícone do estúdio no botão do Steam Dev seguindo exatamente a proporção e estilo dos outros */
 .social-studio-icon {
   width: 22px;
   height: auto;
@@ -767,6 +864,18 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 820px) {
+  .nav-container {
+    flex-wrap: wrap;
+  }
+
+  .nav-discord-text {
+    display: none;
+  }
+
+  .nav-discord-btn {
+    padding: 6px 8px;
+  }
+
   .studio-hero-box {
     grid-template-columns: 1fr;
     text-align: center;

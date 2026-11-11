@@ -6,6 +6,8 @@
   <title>OTA IMON Studios | ZANKOKURYU GETSUDOOM</title>
   <meta name="description" content="Official website of OTA IMON Studios. Creators of ZANKOKURYU GETSUDOOM, Wolfstride, and Zet Zillions.">
   
+  <link rel="icon" type="image/png" href="assets/OTAIMON.png">
+
   <meta property="og:type" content="website">
   <meta property="og:title" content="ZANKOKURYU GETSUDOOM | OTA IMON Studios">
   <meta property="og:description" content="A tactical roguelite dispatch sim where cards, dice, and strategy collide. Wishlist now on Steam.">
@@ -18,19 +20,31 @@
 </head>
 <body>
 
-  <!-- Top Navigation with Studio Logo & Language Switcher -->
+  <!-- Top Navigation with Studio Logo, Subtitle & Discord CTA -->
   <header class="top-nav">
     <div class="nav-container">
       <a href="#hero" class="studio-brand">
         <img src="assets/OTAIMON.png" alt="OTA IMON Studios Logo" class="nav-studio-logo">
-        <span class="brand-text"><span class="brand-bracket">[</span>OTA IMON STUDIOS<span class="brand-bracket">]</span></span>
+        <div class="brand-text-group">
+          <span class="brand-text"><span class="brand-bracket">[</span>OTA IMON STUDIOS<span class="brand-bracket">]</span></span>
+          <span class="brand-tagline">STORY DRIVEN • STRATEGY • TURN-BASED</span>
+        </div>
       </a>
 
-      <!-- Language Toggle -->
-      <div class="lang-switch" id="langSwitch">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <span class="lang-divider">/</span>
-        <button class="lang-btn" data-lang="pt">PT</button>
+      <!-- Right actions: Discord button & Language switcher -->
+      <div class="nav-actions">
+        <a href="https://discord.gg/7vhFTR8Mer" target="_blank" rel="noopener noreferrer" class="nav-discord-btn" title="Join our Discord">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+          </svg>
+          <span class="nav-discord-text">DISCORD</span>
+        </a>
+
+        <div class="lang-switch" id="langSwitch">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <span class="lang-divider">/</span>
+          <button class="lang-btn" data-lang="pt">PT</button>
+        </div>
       </div>
     </div>
   </header>
@@ -44,7 +58,6 @@
           <span class="status-boldonse" data-i18n="hero_status">IN ACTIVE DEVELOPMENT • STEAM WISHLIST LIVE</span>
         </div>
 
-        <!-- 16:9 Banner Image (PNG) -->
         <div class="banner-wrapper">
           <img src="assets/ZANKOKURYU_GETSUDOOM.png" alt="ZANKOKURYU GETSUDOOM" class="ratio-16-9-img" loading="eager">
         </div>
@@ -54,7 +67,6 @@
         </p>
 
         <div class="cta-group">
-          <!-- Steam Protocol with Browser Fallback (Steam Icon Removed) -->
           <a href="https://store.steampowered.com/app/5070890/ZANKOKURYU_GETSUDOOM/?utm_source=studio_site&utm_medium=hero_btn&utm_campaign=direct" 
              data-steam-appid="5070890" 
              class="btn btn-steam steam-launch-btn font-boldonse"
@@ -62,16 +74,29 @@
             <span data-i18n="btn_wishlist">WISHLIST ON STEAM</span>
           </a>
           <a href="https://drive.google.com/drive/folders/19DLbqercZlJgtvkZoFPj9ZsTOVeIPwG4?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-secondary font-boldonse">
-            <span data-i18n="btn_presskit_quick">PRESS KIT (DRIVE)</span>
+            <span data-i18n="btn_presskit_quick">PRESS KIT</span>
           </a>
         </div>
 
         <div class="game-meta">
-          <span><strong>GENRE:</strong> Tactical Roguelite Dispatch Sim</span>
+          <span><strong data-i18n="meta_genre_label">GENRE:</strong> <span data-i18n="meta_genre_val">Strategy · Card Game · Management · Space · Sci-fi</span></span>
           <span class="meta-separator">•</span>
-          <span><strong>PLATFORM:</strong> PC (Steam)</span>
+          <span><strong data-i18n="meta_platform_label">PLATFORM:</strong> <span data-i18n="meta_platform_val">PC (Steam)</span></span>
           <span class="meta-separator">•</span>
-          <span><strong>RELEASE:</strong> TBA</span>
+          <span><strong data-i18n="meta_release_label">RELEASE:</strong> <span data-i18n="meta_release_val">TBA</span></span>
+        </div>
+
+        <!-- Social Callout Section -->
+        <div class="hero-social-callout">
+          <span class="callout-label" data-i18n="hero_social_callout">FOLLOW DEVELOPMENT & JOIN THE CREW</span>
+          <div class="callout-links">
+            <a href="https://discord.gg/7vhFTR8Mer" target="_blank" rel="noopener noreferrer" class="callout-pill">Discord</a>
+            <a href="https://store.steampowered.com/developer/otaimonstudios" target="_blank" rel="noopener noreferrer" class="callout-pill">Steam</a>
+            <a href="https://bsky.app/profile/otaimonstudio.bsky.social" target="_blank" rel="noopener noreferrer" class="callout-pill">Bluesky</a>
+            <a href="https://x.com/otaimonstudios" target="_blank" rel="noopener noreferrer" class="callout-pill">X / Twitter</a>
+            <a href="https://www.instagram.com/otaimonstudios/" target="_blank" rel="noopener noreferrer" class="callout-pill">Instagram</a>
+            <a href="https://www.tiktok.com/@otaimonstudios" target="_blank" rel="noopener noreferrer" class="callout-pill">TikTok</a>
+          </div>
         </div>
       </div>
     </section>
@@ -115,7 +140,6 @@
               <p data-i18n="zet_desc">A story-driven roguelike deckbuilder with over-the-top space trash action, planet fusion, and wild card combos. Published by Raw Fury.</p>
               
               <div class="store-links">
-                <!-- Steam Icon Removed -->
                 <a href="https://store.steampowered.com/app/2229560/Zet_Zillions/" 
                    data-steam-appid="2229560" 
                    class="store-badge steam-launch-btn"
@@ -137,7 +161,6 @@
               <p data-i18n="wolf_desc">A stylish monochrome RPG about three former partners in crime navigating a giant mecha tournament. Published by Raw Fury.</p>
               
               <div class="store-links">
-                <!-- Steam Icon Removed -->
                 <a href="https://store.steampowered.com/app/1331210/Wolfstride/" 
                    data-steam-appid="1331210" 
                    class="store-badge steam-launch-btn"
@@ -166,10 +189,10 @@
         <div class="press-card">
           <div class="press-card-body">
             <h3 data-i18n="press_heading">MEDIA KIT, KEY ART & REVIEW KEYS</h3>
-            <p data-i18n="press_desc">Access high-resolution key art, clean in-game screenshots, studio bios, and game logos in our official press kit folder on Google Drive.</p>
+            <p data-i18n="press_desc">Access high-resolution key art, clean in-game screenshots, studio bios, and game logos in our official press kit folder.</p>
             <div class="press-actions">
               <a href="https://drive.google.com/drive/folders/19DLbqercZlJgtvkZoFPj9ZsTOVeIPwG4?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-press">
-                <span data-i18n="btn_presskit">OFFICIAL PRESS KIT (GOOGLE DRIVE) ↗</span>
+                <span data-i18n="btn_presskit">OFFICIAL PRESS KIT ↗</span>
               </a>
               <a href="mailto:contact@otaimon.com" class="btn btn-outline">
                 <span data-i18n="btn_contact">PRESS INQUIRIES: CONTACT@OTAIMON.COM</span>
@@ -188,7 +211,6 @@
             <img src="assets/OTAIMON.png" alt="OTA IMON Studios" class="studio-massive-logo">
           </div>
           <div class="studio-details">
-            <span class="studio-tag" data-i18n="facts_title">STUDIO PROFILE</span>
             <h2>OTA IMON STUDIOS</h2>
             <div class="studio-specs-list">
               <div class="spec-item">
@@ -219,7 +241,7 @@
       </div>
 
       <div class="social-links-grid" aria-label="Official Social Media Links">
-        <!-- Steam Developer (Using Studio Logo styled matching the other social buttons) -->
+        <!-- Steam Developer -->
         <a href="https://store.steampowered.com/developer/otaimonstudios" target="_blank" rel="noopener noreferrer" class="social-icon-btn studio-dev-link" aria-label="Steam Developer Page" title="Steam Developer Page">
           <img src="assets/OTAIMON.png" alt="OTA IMON Developer" class="social-studio-icon">
         </a>
